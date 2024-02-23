@@ -16,7 +16,6 @@ stages:
     - bash: echo SourceBranchName:$(Build.SourceBranchName)
     - bash: echo SourcesDirectory:$(Build.SourcesDirectory)
     - bash: echo DefaultWorkingDirectory:$(System.DefaultWorkingDirectory)
-    - bash: DefaultWorkingDirectory:ls -R $(System.DefaultWorkingDirectory)
     - bash: echo ArtifactStagingDirectory:$(Build.ArtifactStagingDirectory)
 
 
