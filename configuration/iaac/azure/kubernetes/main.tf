@@ -3,12 +3,6 @@ resource "azurerm_resource_group" "resource_group" {
   location = var.location
 }
 
-resource "azurerm_resource_group" "resource_group" {
-  name     = "terraform-backend-rg"
-  location = var.location
-}
-
-
 
 provider "azurerm" {
   //version = "~>2.0.0"
