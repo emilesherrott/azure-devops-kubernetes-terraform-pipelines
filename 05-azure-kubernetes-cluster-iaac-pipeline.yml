@@ -26,4 +26,4 @@ steps:
     backendAzureRmContainerName: 'storageacctesherrottcontainer'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
     allowTelemetryCollection: true
-  displayName: 'Run a one-line script'
+  displayName: 'Tarraform Init'
