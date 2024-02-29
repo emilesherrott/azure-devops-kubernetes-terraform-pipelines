@@ -26,11 +26,8 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
   default_node_pool {
     name            = "agentpool"
     node_count      = var.node_count
-    # vm_size         = "standard_b2ms"
-    # vm_size         = "standard_d2as_v5"  
-    # vm_size = "standard_dc16ads_cc_v5"  
-    # vm_size = "Standard_A2_v2"
-    vm_size = "standard_dc2ads_v5"
+    vm_size         = "standard_b2ms"
+    # vm_size = "standard_dc2ads_v5"
     # Choose VM: https://azure.microsoft.com/en-gb/pricing/vm-selector/
   }
 
