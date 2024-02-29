@@ -16,8 +16,8 @@ steps:
     ensureBackend: true
     backendAzureRmResourceGroupName: 'terraform-backend-rg'
     backendAzureRmResourceGroupLocation: 'westeurope'
-    backendAzureRmStorageAccountName: 'storageaccountemilesherrott'
-    backendAzureRmContainerName: 'storageaccountemilesherrottcontainer'
+    backendAzureRmStorageAccountName: 'storageaccountesherrott'
+    backendAzureRmContainerName: 'storageaccountesherrottcontainer'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
     allowTelemetryCollection: true
   displayName: 'Run a one-line script'
