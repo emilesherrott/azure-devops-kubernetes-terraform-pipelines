@@ -44,8 +44,8 @@ stages:
   jobs: 
   - job: Deploy
     displayName: Deploy Docker Image
-  pool:
-    vmImage: 'ubuntu-latest'
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
     - task: DownloadPipelineArtifact@2
       inputs:
@@ -53,7 +53,7 @@ stages:
         artifactName: 'manifests'
         itemPattern: '**/*.yaml'
         targetPath: '$(System.ArtifactsDirectory)'
-        displayName: Download Artifacts
+      displayName: Download Artifacts
     - task: KubernetesManifest@1
       inputs:
         action: 'deploy'
@@ -62,4 +62,4 @@ stages:
         namespace: 'default'
         manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
         containers: 'emilesherrott/currency-exchange-devops:$(tag)'
-        displayName: Deployment
+      displayName: Deployment
