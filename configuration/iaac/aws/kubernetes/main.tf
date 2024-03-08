@@ -7,8 +7,14 @@
 # arn:aws:s3:::terraform-backend-state-emilesherrott
 
 terraform {
+  required_providers {
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 2.12"
+    }
+  }
   backend "s3" {
-    bucket = "mybucket" # Will be overridden from build
+    bucket = "mybucket"       # Will be overridden from build
     key    = "path/to/my/key" # Will be overridden from build
     region = "us-east-1"
   }
@@ -26,25 +32,24 @@ provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
   token                  = data.aws_eks_cluster_auth.cluster.token
-  version                = "~> 2.12"
 }
 
 module "in28minutes-cluster" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "in28minutes-cluster"
   cluster_version = "1.14"
-  subnets         = ["subnet-0caae72f8762e71fd", "subnet-0993ca89727152b5f"] 
+  subnet_ids      = ["subnet-0caae72f8762e71fd", "subnet-0993ca89727152b5f"]
   #subnets = data.aws_subnet_ids.subnets.ids
-  vpc_id          = aws_default_vpc.default.id
+  vpc_id = aws_default_vpc.default.id
 
   #vpc_id         = "vpc-1234556abcdef"
 
-  node_groups = [
+  eks_managed_node_groups = [
     {
-      instance_type = "t2.micro"
-      max_capacity  = 5
+      instance_type    = "t2.micro"
+      max_capacity     = 5
       desired_capacity = 3
-      min_capacity  = 3
+      min_capacity     = 3
     }
   ]
 }
@@ -79,5 +84,5 @@ resource "kubernetes_cluster_role_binding" "example" {
 
 # Needed to set the default region
 provider "aws" {
-  region  = "us-east-1"
+  region = "us-east-1"
 }
