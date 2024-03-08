@@ -4,6 +4,7 @@
 # terraform-backend-state-in28minutes-123
 # AKIA4AHVNOD7OOO6T4KI
 
+# arn:aws:s3:::terraform-backend-state-emilesherrott
 
 terraform {
   backend "s3" {
@@ -32,7 +33,7 @@ module "in28minutes-cluster" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "in28minutes-cluster"
   cluster_version = "1.14"
-  subnets         = ["subnet-3f7b2563", "subnet-4a7d6a45"] #CHANGE
+  subnets         = ["subnet-0caae72f8762e71fd", "subnet-0993ca89727152b5f"] 
   #subnets = data.aws_subnet_ids.subnets.ids
   vpc_id          = aws_default_vpc.default.id
 
