@@ -1,9 +1,3 @@
-# aws --version
-# aws eks --region us-east-1 update-kubeconfig --name in28minutes-cluster
-# Uses default VPC and Subnet. Create Your Own VPC and Private Subnets for Prod Usage.
-# terraform-backend-state-in28minutes-123
-# AKIA4AHVNOD7OOO6T4KI
-
 # arn:aws:s3:::terraform-backend-state-emilesherrott
 
 terraform {
@@ -61,9 +55,7 @@ module "in28minutes-cluster" {
 # }
 
 
-# We will use ServiceAccount to connect to K8S Cluster in CI/CD mode
-# ServiceAccount needs permissions to create deployments 
-# and services in default namespace
+
 # resource "kubernetes_cluster_role_binding" "example" {
 #   metadata {
 #     name = "fabric8-rbac"
