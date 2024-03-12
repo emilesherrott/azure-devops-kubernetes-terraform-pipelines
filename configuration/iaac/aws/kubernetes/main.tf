@@ -35,7 +35,7 @@ module "in28minutes-cluster" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "in28minutes-cluster"
   cluster_version = "1.28"
-  subnet_ids      = ["subnet-0caae72f8762e71fd", "subnet-0993ca89727152b5f"]
+  subnet_ids      = ["subnet-0565c72c8be2a4a50", "subnet-0e0be61b12e125be5"]
   #subnet_ids = data.aws_subnet_ids.subnets.ids
   vpc_id                         = aws_default_vpc.default.id
   cluster_endpoint_public_access = true
