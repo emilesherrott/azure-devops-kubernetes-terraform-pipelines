@@ -34,17 +34,19 @@ module "in28minutes-cluster" {
   cluster_version = "1.14"
   subnet_ids      = ["subnet-0caae72f8762e71fd", "subnet-0993ca89727152b5f"]
   #subnets = data.aws_subnet_ids.subnets.ids
-  vpc_id = aws_default_vpc.default.id
+  vpc_id                         = aws_default_vpc.default.id
   cluster_endpoint_public_access = true
   #vpc_id         = "vpc-1234556abcdef"
   # eks_managed_node_group_defaults = ["t2.micro"]
   eks_managed_node_groups = {
-      instance_types    =  ["t2.micro"]
-      min_size     = 1
-      max_size     = 10
-      desired_size = 1
-      iam_role_additional_policies = {}
+    default = {
+      instance_types = ["t2.micro"]
+      min_size       = 1
+      max_size       = 10
+      desired_size   = 1
     }
+    iam_role_additional_policies = {}
+  }
 }
 
 # data "aws_eks_cluster" "cluster" {
