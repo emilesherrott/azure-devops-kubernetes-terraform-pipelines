@@ -44,11 +44,7 @@ module "in28minutes-cluster" {
       min_size       = 1
       max_size       = 10
       desired_size   = 1
-      aws_iam_role = {
-        name_prefix = "${aws_eks_cluster.this.name}"
-      }
     }
-    iam_role_additional_policies = {}
   }
 }
 
