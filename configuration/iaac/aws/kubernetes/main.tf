@@ -26,9 +26,9 @@ data "aws_subnets" "subnets" {
 }
 
 provider "kubernetes" {
-  # host                   = data.aws_eks_cluster.cluster.endpoint
-  # cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
-  # token                  = data.aws_eks_cluster_auth.cluster.token
+  host                   = data.aws_eks_cluster.cluster.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
+  token                  = data.aws_eks_cluster_auth.cluster.token
 }
 
 module "in28minutes-cluster" {
@@ -51,31 +51,31 @@ module "in28minutes-cluster" {
   }
 }
 
-# data "aws_eks_cluster" "cluster" {
-#   name = module.in28minutes-cluster.cluster_id
-# }
+data "aws_eks_cluster" "cluster" {
+  name = module.in28minutes-cluster.cluster_id
+}
 
-# data "aws_eks_cluster_auth" "cluster" {
-#   name = module.in28minutes-cluster.cluster_id
-# }
+data "aws_eks_cluster_auth" "cluster" {
+  name = module.in28minutes-cluster.cluster_id
+}
 
 
 
-# resource "kubernetes_cluster_role_binding" "example" {
-#   metadata {
-#     name = "fabric8-rbac"
-#   }
-#   role_ref {
-#     api_group = "rbac.authorization.k8s.io"
-#     kind      = "ClusterRole"
-#     name      = "cluster-admin"
-#   }
-#   subject {
-#     kind      = "ServiceAccount"
-#     name      = "default"
-#     namespace = "default"
-#   }
-# }
+resource "kubernetes_cluster_role_binding" "example" {
+  metadata {
+    name = "fabric8-rbac"
+  }
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "ClusterRole"
+    name      = "cluster-admin"
+  }
+  subject {
+    kind      = "ServiceAccount"
+    name      = "default"
+    namespace = "default"
+  }
+}
 
 # Needed to set the default region
 provider "aws" {
