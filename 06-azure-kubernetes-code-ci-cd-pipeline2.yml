@@ -5,8 +5,7 @@ resources:
 - repo: self
 
 variables:
-  # tag: '$(Build.BuildId)'
-  tag: 472
+  tag: '$(Build.BuildId)'
 
 stages:
 - stage: Build
@@ -17,14 +16,15 @@ stages:
     pool:
       name: lfa-macbook
     steps:
-    # - task: Docker@2
-    #   displayName: Build Image
-    #   inputs:
-    #     containerRegistry: 'emilesherrott-docker-hub'
-    #     repository: 'emilesherrott/currency-exchange-devops'
-    #     command: 'buildAndPush'
-    #     Dockerfile: '**/Dockerfile'
-    #     tags: '$(tag)'
+    - task: Docker@2
+      displayName: Build Image
+      inputs:
+        containerRegistry: 'emilesherrott-docker-hub'
+        repository: 'emilesherrott/currency-exchange-devops'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: '$(tag)'
+        arguments: '--build-arg --platform linux/amd64'
 
     - task: CopyFiles@2
       inputs:
