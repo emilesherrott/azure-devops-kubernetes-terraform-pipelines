@@ -40,10 +40,10 @@ stages:
         publishLocation: 'Container'
 
 
-- stage: Deploy
+- stage: Deployment
   displayName: Deploy Image to K8S
   jobs:
-  - job: Deploy
+  - job: Deployment
     displayName: Deploy DockerImage
     pool:
       vmImage: 'ubuntu-latest'
@@ -57,7 +57,7 @@ stages:
         targetPath: '$(System.ArtifactsDirectory)'
 
     - task: KubernetesManifest@1
-      displayName: Deployment
+      displayName: Deployment1
       inputs:
         action: 'deploy'
         connectionType: 'kubernetesServiceConnection'
