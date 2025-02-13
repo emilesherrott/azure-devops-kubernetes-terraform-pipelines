@@ -3,6 +3,8 @@ trigger:
 
 pool:
   name: Default
+  demands:
+  - Agent.Name -equals EmileSherrott-Local-Agent
 
 stages:
 - stage: Build
