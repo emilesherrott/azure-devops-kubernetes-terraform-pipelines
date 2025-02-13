@@ -14,7 +14,7 @@ stages:
   - job: Build
     displayName: Build Image
     pool:
-      vmImage: ubuntu-latest
+      name: lfa-macbook
     steps:
     - task: Docker@2
       displayName: Build an image
