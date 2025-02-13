@@ -16,15 +16,25 @@ stages:
     pool:
       name: lfa-macbook
     steps:
+
     - task: Docker@2
       displayName: Build Image
       inputs:
         containerRegistry: 'emilesherrott-docker-hub'
         repository: 'emilesherrott/currency-exchange-devops'
-        command: 'buildAndPush'
+        command: 'build'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
-        arguments: '--build-arg --platform linux/amd64'
+        arguments: --platform linux/amd64
+
+    - task: Docker@2
+      displayName: Push Image
+      inputs:
+        containerRegistry: 'emilesherrott-docker-hub'
+        repository: 'emilesherrott/currency-exchange-devops'
+        command: 'push'
+        # Dockerfile: '**/Dockerfile'
+        # tags: '$(tag)'
 
     - task: CopyFiles@2
       inputs:
