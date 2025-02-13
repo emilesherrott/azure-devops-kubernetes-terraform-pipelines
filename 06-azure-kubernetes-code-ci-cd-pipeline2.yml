@@ -63,4 +63,5 @@ stages:
         namespace: 'default'
         manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
         containers: 'emilesherrott/currency-exchange-devops:$(tag)'
+        arguments: '--validate=false'
       displayName: Deployment
