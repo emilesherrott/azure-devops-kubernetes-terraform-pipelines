@@ -5,8 +5,8 @@ resources:
 - repo: self
 
 variables:
-  # tag: '$(Build.BuildId)'
-  tag: 420
+  tag: '$(Build.BuildId)'
+  # tag: 420
 
 stages:
 - stage: Build
@@ -17,13 +17,14 @@ stages:
     pool:
       name: lfa-macbook
     steps:
-    # - task: Docker@2
-    #   displayName: Build an image
-    #   inputs:
-    #     command: build
-    #     dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-    #     tags: |
-    #       $(tag)
+    - task: Docker@2
+      displayName: Build and push image
+      inputs:
+        containerRegistry: 'emilesherrott-docker-hub'
+        repository: 'emilesherrott/currency-exchange-devops'
+        command: 'buildAndPush'
+        Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        tags: '$(tag)'
 
     - task: CopyFiles@2
       displayName: Copy YAML Files
@@ -66,7 +67,7 @@ stages:
         kubernetesServiceConnection: 'aws-kubernetes-cluster-service-connection'
         namespace: 'default'
         manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
-        containers: emilesherrott/currency-exchange-devops:$(tag)
+        containers: emilesherrott/currency-exchange-devops:420
     
 
     
