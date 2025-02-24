@@ -14,7 +14,7 @@ stages:
   - job: Build
     displayName: Build Image
     pool:
-      name: lfa-macbook
+      name: emilesherrott-macmini-2
     steps:
     - task: Docker@2
       displayName: Build an image
