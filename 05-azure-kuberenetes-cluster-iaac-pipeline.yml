@@ -14,6 +14,8 @@ steps:
   inputs:
     secureFile: 'azure_rsa.pub'
 
+- bash: ls -R '$(System.DefaultWorkingDirectory'
+  displayName: 'Test'
 - task: TerraformCLI@2
   displayName: 'terraform init'
   inputs:
