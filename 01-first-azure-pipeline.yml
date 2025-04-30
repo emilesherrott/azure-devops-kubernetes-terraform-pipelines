@@ -10,7 +10,7 @@ pool:
   name: mac-mini-x86_64
 
 steps:
-- script: echo Hello, world!
+- script: echo Hello Emile!
   displayName: 'Run a one-line script'
 
 - script: |
