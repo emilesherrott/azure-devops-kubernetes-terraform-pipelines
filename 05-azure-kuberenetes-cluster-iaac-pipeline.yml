@@ -2,14 +2,17 @@ trigger:
 - main
 
 pool:
-  # name: mac-mini-x86_64
-  name: lfa-macbook
+  name: mac-mini-x86_64
+  # name: lfa-macbook
 
 
 steps:
 - script: echo K8S Terraform Azure!
   displayName: 'Run a one-line script'
 
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@1
+  inputs:
+    terraformVersion: '1.5.7'
 - task: DownloadSecureFile@1
   name: publickey
   inputs:
