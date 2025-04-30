@@ -2,8 +2,8 @@ trigger:
 - main
 
 pool:
-  # name: mac-mini-x86_64
-  name: lfa-macbook
+  name: mac-mini-x86_64
+  # name: lfa-macbook
 
 
 steps:
